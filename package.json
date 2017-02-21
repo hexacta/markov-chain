@@ -1,0 +1,14 @@
+{
+  "name": "markov-chain",
+  "version": "1.0.0",
+  "main": "markov-chain.js",
+  "repository": "git@github.com:pomber/markov-chain.git",
+  "author": "pomber <pombopombopombo@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "test": "ava"
+  },
+  "devDependencies": {
+    "ava": "^0.18.2"
+  }
+}
