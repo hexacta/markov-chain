@@ -2,6 +2,11 @@
   var START = " ^";
   var END = " $";
 
+  function count(model, token) {
+    const tmodel = model.tokens[token];
+    return tmodel ? tmodel.count : 0;
+  }
+
   function add(model, prev, token) {
     model.count += 1;
 
@@ -29,8 +34,11 @@
   }
 
   var markov = {
+    START: START,
+    END: END,
     create: create,
-    update: update
+    update: update,
+    count: count
   };
 
   if (typeof module != "undefined" && module.exports) {

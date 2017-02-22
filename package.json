@@ -6,7 +6,8 @@
   "author": "pomber <pombopombopombo@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "test": "ava"
+    "test": "ava",
+    "test:watch": "ava --watch"
   },
   "devDependencies": {
     "ava": "^0.18.2"
