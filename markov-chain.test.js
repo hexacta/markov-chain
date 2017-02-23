@@ -32,3 +32,25 @@ test("a b c", t => {
   t.is(markov.count(model, ["a", "c"]), 0);
   t.is(markov.count(model, ["a", "b", "c"]), 1);
 });
+
+test("a b a b", t => {
+  const model = markov.create();
+  markov.update(model, ["a", "b", "a", "b"]);
+
+  t.is(markov.count(model, ["a"]), 2);
+  t.is(markov.count(model, ["b"]), 2);
+  t.is(markov.count(model, ["a", "a"]), 0);
+  t.is(markov.count(model, ["a", "b"]), 2);
+  t.is(markov.count(model, ["b", "a"]), 1);
+  t.is(markov.count(model, ["a", "b", "a"]), 1);
+  t.is(markov.count(model, ["b", "a", "b"]), 1);
+});
+
+test("a a a", t => {
+  const model = markov.create();
+  markov.update(model, ["a", "a", "a"]);
+
+  t.is(markov.count(model, ["a"]), 3);
+  t.is(markov.count(model, ["a", "a"]), 2);
+  t.is(markov.count(model, ["a", "a", "a"]), 1);
+});

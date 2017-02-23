@@ -1,17 +1,21 @@
 (function() {
   var START = " ^";
   var END = " $";
+  var DEPTH = 3;
 
   function create() {
     return { count: 0, tokens: {} };
   }
 
   function update(model, chain) {
-    var prev = null;
-    [].concat(START, chain, END).forEach(function(token) {
-      add(model, [prev, token]);
-      prev = token;
-    });
+    var depth = DEPTH;
+    var fullChain = [].concat(START, chain, END);
+    for (var i = 1; i <= fullChain.length; i++) {
+      var start = i < depth ? 0 : i - depth;
+      var end = i;
+      var currentChain = fullChain.slice(start, end);
+      add(model, currentChain);
+    }
   }
 
   function add(model, chain) {
