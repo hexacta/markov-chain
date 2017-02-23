@@ -5,21 +5,14 @@ test("create", t => {
   t.truthy(markov.create());
 });
 
-test("one token", t => {
+test("count one", t => {
   const model = markov.create();
   markov.update(model, ["one"]);
   const count = markov.count(model, ["one"]);
   t.is(count, 1);
 });
 
-test("missing token", t => {
-  const model = markov.create();
-  markov.update(model, ["one"]);
-  const count = markov.count(model, ["two"]);
-  t.is(count, 0);
-});
-
-test("a b c", t => {
+test("count a b c", t => {
   const model = markov.create();
   markov.update(model, ["a", "b", "c"]);
 
@@ -33,7 +26,7 @@ test("a b c", t => {
   t.is(markov.count(model, ["a", "b", "c"]), 1);
 });
 
-test("a b a b", t => {
+test("count a b a b", t => {
   const model = markov.create();
   markov.update(model, ["a", "b", "a", "b"]);
 
@@ -46,11 +39,20 @@ test("a b a b", t => {
   t.is(markov.count(model, ["b", "a", "b"]), 1);
 });
 
-test("a a a", t => {
+test("count a a a", t => {
   const model = markov.create();
   markov.update(model, ["a", "a", "a"]);
 
   t.is(markov.count(model, ["a"]), 3);
   t.is(markov.count(model, ["a", "a"]), 2);
   t.is(markov.count(model, ["a", "a", "a"]), 1);
+});
+
+test("run a b c", t => {
+  const model = markov.create();
+  markov.update(model, ["a", "b", "c"]);
+
+  const chain = markov.run(model);
+
+  t.deepEqual(chain, ["a", "b", "c"]);
 });

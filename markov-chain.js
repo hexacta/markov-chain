@@ -18,6 +18,17 @@
     }
   }
 
+  function run(model) {
+    var chain = [];
+    var token = next(model, [START]);
+    while (token != END) {
+      chain.push(token);
+      // TODO: include more tokens (depending on DEPTH)
+      token = next(model, [token]);
+    }
+    return chain;
+  }
+
   function add(model, chain) {
     var node = getNode(model, chain);
     node.count += 1;
@@ -44,12 +55,29 @@
     return node.count;
   }
 
+  function next(model, prev) {
+    var node = getNode(model, prev);
+    if (!node.count) {
+      throw Error("Path missing from model");
+    }
+    var pivot = Math.random() * node.count;
+    var tokens = Object.keys(node.tokens);
+    for (var k = i = 0; k < tokens.length; k++) {
+      var token = tokens[k];
+      i += node.tokens[token].count;
+      if (i > pivot) {
+        return token;
+      }
+    }
+  }
+
   var markov = {
     START: START,
     END: END,
     create: create,
     update: update,
-    count: count
+    count: count,
+    run: run
   };
 
   if (typeof module != "undefined" && module.exports) {
