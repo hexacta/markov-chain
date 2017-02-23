@@ -1,5 +1,5 @@
 {
-  "name": "markov-chain",
+  "name": "hx-markov-chain",
   "version": "1.0.0",
   "main": "markov-chain.js",
   "repository": "git@github.com:hexacta/markov-chain.git",
