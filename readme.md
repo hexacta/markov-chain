@@ -1,4 +1,4 @@
-# markov-chain [![Build Status](https://travis-ci.org/hexacta/markov-chain.svg?branch=master)](https://travis-ci.org/hexacta/markov-chain)  
+# markov-chain [![Build Status](https://travis-ci.org/hexacta/markov-chain.svg?branch=master)](https://travis-ci.org/hexacta/markov-chain) [![npm version](https://img.shields.io/npm/v/hx-markov-chain.svg?style=flat)](https://www.npmjs.com/package/hx-markov-chain)  
 > Create, update and run Markov chain models for text generation.
 
 ## Install
