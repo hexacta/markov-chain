@@ -1,6 +1,17 @@
 {
   "name": "hx-markov-chain",
   "version": "1.0.0",
+  "description": "Create, update and run Markov chain models for text generation",
+  "keywords": [
+    "nlp",
+    "markov-chain",
+    "markov-chains",
+    "browser",
+    "node",
+    "nlg",
+    "text-generation",
+    "text-generator"
+  ],
   "main": "markov-chain.js",
   "repository": "git@github.com:hexacta/markov-chain.git",
   "author": "pomber <pombopombopombo@gmail.com>",
