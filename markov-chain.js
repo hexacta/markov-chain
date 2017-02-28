@@ -19,14 +19,14 @@
   }
 
   function run(model) {
-    var chain = [];
-    var token = next(model, [START]);
+    var chain = [START];
+    var token = START;
     while (token != END) {
+      var prev = chain.slice(-DEPTH+1);
+      var token = next(model, prev);
       chain.push(token);
-      // TODO: include more tokens (depending on DEPTH)
-      token = next(model, [token]);
     }
-    return chain;
+    return chain.slice(1,-1);
   }
 
   function add(model, chain) {
@@ -58,7 +58,7 @@
   function next(model, prev) {
     var node = getNode(model, prev);
     if (!node.count) {
-      throw Error("Path missing from model");
+      throw Error("Path missing from model " + prev);
     }
     var pivot = Math.random() * node.count;
     var tokens = Object.keys(node.tokens);
