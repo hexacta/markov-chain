@@ -22,6 +22,7 @@
     var chain = [START];
     var token = START;
     while (token != END) {
+      // TODO add count threshold
       var prev = chain.slice(-DEPTH+1);
       var token = next(model, prev);
       chain.push(token);
